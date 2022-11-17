@@ -24,7 +24,7 @@ public class App extends Application {
         stage.setTitle("Gestor de Comandas");
         stage.setMinWidth(900);
         stage.setMinHeight(700);
-        
+        stage.setFullScreen(true);
         stage.show();
     }
 

@@ -4,7 +4,6 @@ com\mycompany\loginfxml\ProductoData.class
 com\mycompany\loginfxml\Carta.class
 models\Pedido.class
 com\mycompany\loginfxml\HibernateUtil.class
-com\mycompany\loginfxml\Pedidos.class
 com\mycompany\loginfxml\Historial.class
 module-info.class
 models\Producto.class

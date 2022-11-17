@@ -73,6 +73,8 @@ public class Pedidos implements Initializable {
     static Carta carta;
     @FXML
     private Button btnHistorial;
+    @FXML
+    private Button btnSelector;
     
     
     
@@ -299,6 +301,16 @@ public class Pedidos implements Initializable {
         
         try {
             App.setRoot("historial");
+        } catch (IOException ex) {
+            Logger.getLogger(Pedidos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void irSelector(ActionEvent event) {
+        
+        try {
+            App.setRoot("selectorProductos");
         } catch (IOException ex) {
             Logger.getLogger(Pedidos.class.getName()).log(Level.SEVERE, null, ex);
         }
