@@ -50,7 +50,7 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <Label contentDisplay="CENTER" text="Estadistica">
+            <Label contentDisplay="CENTER" text="TOP PRODUCTO ÚLTIMA SEMANA">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -62,7 +62,7 @@
       </VBox>
    </top>
    <center>
-      <BarChart fx:id="chartA" prefHeight="398.0" prefWidth="759.0" title="chart1" BorderPane.alignment="CENTER">
+      <BarChart fx:id="chartA" prefHeight="533.0" prefWidth="680.0" BorderPane.alignment="CENTER">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>

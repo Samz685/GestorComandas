@@ -24,6 +24,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -75,12 +76,21 @@ public class Pedidos implements Initializable {
     private Button btnHistorial;
     @FXML
     private Button btnEstadistica;
+    @FXML
+    private Tooltip tool;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         rellenarCombos();
 
+        inicializarComponentes();
+
+        verPedidosHoy();
+
+    }
+
+    private void inicializarComponentes() {
         cId.setCellValueFactory(new PropertyValueFactory("idPed"));
         cFecha.setCellValueFactory(new PropertyValueFactory("fecha"));
         cCliente.setCellValueFactory(new PropertyValueFactory("cliente"));
@@ -91,9 +101,6 @@ public class Pedidos implements Initializable {
 
         btnActualizar.setDisable(true);
         btnBorrar.setDisable(true);
-
-        verPedidosHoy();
-
     }
 
     @FXML
@@ -116,9 +123,12 @@ public class Pedidos implements Initializable {
             btnBorrar.setDisable(false);
 
             System.out.println(pedidoActual);
+            
+            tool.setText(pedidoActual.getCliente());
 
         }
     }
+    
 
     private Pedido leerFormulario() {
         String fecha = textFecha.getText();
