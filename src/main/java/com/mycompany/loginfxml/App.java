@@ -15,7 +15,6 @@ import javafx.scene.input.KeyCombination;
 public class App extends Application {
 
     private static Scene scene;
-    private Boolean semaforo;
 
     @Override
     public void start(Stage stage) throws IOException {

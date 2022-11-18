@@ -1,9 +1,12 @@
 com\mycompany\loginfxml\Principal.class
+com\mycompany\loginfxml\ProductoVenta.class
 com\mycompany\loginfxml\App.class
-com\mycompany\loginfxml\ProductoData.class
 com\mycompany\loginfxml\Carta.class
 models\Pedido.class
 com\mycompany\loginfxml\HibernateUtil.class
+com\mycompany\loginfxml\Pedidos.class
 com\mycompany\loginfxml\Historial.class
+com\mycompany\loginfxml\SelectorProductos.class
 module-info.class
+com\mycompany\loginfxml\Estadistica.class
 models\Producto.class

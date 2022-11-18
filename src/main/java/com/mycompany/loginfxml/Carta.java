@@ -73,8 +73,6 @@ public class Carta implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-         ProductoData.setProducto(traerProductos());
-        
         ObservableList<String> items = FXCollections.observableArrayList();
         items.addAll("DISPONIBLE", "AGOTADO");
         

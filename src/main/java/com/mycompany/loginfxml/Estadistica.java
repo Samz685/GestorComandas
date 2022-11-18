@@ -2,35 +2,19 @@ package com.mycompany.loginfxml;
 
 import java.io.IOException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import models.Pedido;
 import models.Producto;
 import org.hibernate.SQLQuery;
@@ -60,6 +44,7 @@ public class Estadistica implements Initializable {
             + "INNER JOIN pedido p\n"
             + "WHERE pr.nombre = p.producto\n"
             + "and pr.nombre in (SELECT producto FROM pedido)\n"
+            + "and p.fecha > current_date - interval 1 month\n"
             + "group by pr.nombre";
 
     ArrayList<ProductoVenta> productosVenta = traerVentas();
@@ -86,17 +71,6 @@ public class Estadistica implements Initializable {
         System.out.println(productosVenta.toString());
     }
 
-    public ArrayList<Producto> traerProductos() {
-        ArrayList<Producto> productos = new ArrayList<>();
-        try ( Session s = HibernateUtil.getSessionFactory().openSession()) {
-            Query q = s.createQuery("from Producto");
-            productos = (ArrayList<Producto>) q.list();
-        }
-
-        return productos;
-
-    }
-
     public ArrayList<ProductoVenta> traerVentas() {
 
         ArrayList<ProductoVenta> listaVentas = new ArrayList<>();
@@ -112,14 +86,10 @@ public class Estadistica implements Initializable {
                 pV.setNombre(row[0].toString());
                 pV.setVenta(Integer.parseInt(row[1].toString()));
                 listaVentas.add(pV);
-
             }
-
         } catch (Exception e) {
         }
-
         return listaVentas;
-
     }
 
     @FXML
