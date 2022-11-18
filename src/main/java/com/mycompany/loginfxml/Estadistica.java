@@ -61,14 +61,13 @@ public class Estadistica implements Initializable {
             + "WHERE pr.nombre = p.producto\n"
             + "and pr.nombre in (SELECT producto FROM pedido)\n"
             + "group by pr.nombre";
-    
+
     ArrayList<ProductoVenta> productosVenta = traerVentas();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         crearChart();
-    
 
     }
 
@@ -76,12 +75,12 @@ public class Estadistica implements Initializable {
         XYChart.Series serie1 = new XYChart.Series<>();
         serie1.setName("Producto");
 
-        for (ProductoVenta p : productosVenta){
+        for (ProductoVenta p : productosVenta) {
             String nombre = p.getNombre();
             int venta = p.getVenta();
-            
+
             serie1.getData().add(new XYChart.Data(nombre, venta));
-            
+
         }
         chartA.getData().addAll(serie1);
         System.out.println(productosVenta.toString());
@@ -102,17 +101,21 @@ public class Estadistica implements Initializable {
 
         ArrayList<ProductoVenta> listaVentas = new ArrayList<>();
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        SQLQuery query = session.createSQLQuery(VENTAS);
-        List<Object[]> rows = query.list();
-        for (Object[] row : rows) {
-            ProductoVenta pV = new ProductoVenta();
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            Transaction tx = session.beginTransaction();
+            SQLQuery query = session.createSQLQuery(VENTAS);
+            List<Object[]> rows = query.list();
 
-            pV.setNombre(row[0].toString());
-            pV.setVenta(Integer.parseInt(row[1].toString()));
-            listaVentas.add(pV);
+            for (Object[] row : rows) {
+                ProductoVenta pV = new ProductoVenta();
+                pV.setNombre(row[0].toString());
+                pV.setVenta(Integer.parseInt(row[1].toString()));
+                listaVentas.add(pV);
 
+            }
+
+        } catch (Exception e) {
         }
 
         return listaVentas;
