@@ -40,7 +40,7 @@
                         <Label text="Cliente" GridPane.rowIndex="1" />
                         <TextField fx:id="textFecha" GridPane.columnIndex="1" />
                         <TextField fx:id="textCliente" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button fx:id="btnSelector" mnemonicParsing="false" onAction="#irSelector" text="Productos" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button fx:id="btnEstadistica" mnemonicParsing="false" onAction="#irEstadistica" text="Estadistica" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                      <padding>
                         <Insets left="-50.0" right="50.0" />
