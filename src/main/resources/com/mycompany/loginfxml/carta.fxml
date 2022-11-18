@@ -64,7 +64,7 @@
                         <Label prefHeight="17.0" prefWidth="81.0" text="Disponibilidad" GridPane.rowIndex="1" />
                         <TextField fx:id="textPrecio" maxWidth="150.0" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" />
                         <ComboBox fx:id="comboDisponibilidad" accessibleText="DISPONIBLE&#10;AGOTADO&#10;" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button fx:id="btnAñadir" maxWidth="1.7976931348623157E308" minWidth="0.0" mnemonicParsing="false" onAction="#añadirTarea" prefHeight="50.0" prefWidth="150.0" text="Añadir" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button fx:id="btnAñadir" maxWidth="1.7976931348623157E308" minWidth="0.0" mnemonicParsing="false" onAction="#añadirProducto" prefHeight="50.0" prefWidth="150.0" text="Añadir" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                      <padding>
                         <Insets left="10.0" />

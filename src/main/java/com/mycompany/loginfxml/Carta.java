@@ -145,9 +145,10 @@ public class Carta implements Initializable {
         }
     }
 
+    
     @FXML
-    private void añadirTarea(ActionEvent event) {
-
+    private void añadirProducto(ActionEvent event) {
+  
         Producto p = leerFormulario();
 
         if (p != null) {
@@ -262,5 +263,7 @@ public class Carta implements Initializable {
     @FXML
     private void Cerrar(ActionEvent event) {
     }
+
+    
 
 }

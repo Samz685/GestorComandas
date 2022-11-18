@@ -1,5 +1,6 @@
 package com.mycompany.loginfxml;
 
+import models.ProductoData;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class Estadistica implements Initializable {
             + "and p.fecha > current_date - interval 1 month\n"
             + "group by pr.nombre";
 
-    ArrayList<ProductoVenta> productosVenta = traerVentas();
+    ArrayList<ProductoData> productosVenta = traerVentas();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -60,7 +61,7 @@ public class Estadistica implements Initializable {
         XYChart.Series serie1 = new XYChart.Series<>();
         serie1.setName("Producto");
 
-        for (ProductoVenta p : productosVenta) {
+        for (ProductoData p : productosVenta) {
             String nombre = p.getNombre();
             int venta = p.getVenta();
 
@@ -71,9 +72,9 @@ public class Estadistica implements Initializable {
         System.out.println(productosVenta.toString());
     }
 
-    public ArrayList<ProductoVenta> traerVentas() {
+    public ArrayList<ProductoData> traerVentas() {
 
-        ArrayList<ProductoVenta> listaVentas = new ArrayList<>();
+        ArrayList<ProductoData> listaVentas = new ArrayList<>();
 
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
@@ -82,7 +83,7 @@ public class Estadistica implements Initializable {
             List<Object[]> rows = query.list();
 
             for (Object[] row : rows) {
-                ProductoVenta pV = new ProductoVenta();
+                ProductoData pV = new ProductoData();
                 pV.setNombre(row[0].toString());
                 pV.setVenta(Integer.parseInt(row[1].toString()));
                 listaVentas.add(pV);

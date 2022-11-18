@@ -1,10 +1,12 @@
 package com.mycompany.loginfxml;
 
+import models.ClienteData;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -28,8 +30,11 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import models.Pedido;
 import models.Producto;
+import models.ProductoData;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -76,8 +81,6 @@ public class Pedidos implements Initializable {
     private Button btnHistorial;
     @FXML
     private Button btnEstadistica;
-    @FXML
-    private Tooltip tool;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -101,6 +104,7 @@ public class Pedidos implements Initializable {
 
         btnActualizar.setDisable(true);
         btnBorrar.setDisable(true);
+
     }
 
     @FXML
@@ -123,12 +127,9 @@ public class Pedidos implements Initializable {
             btnBorrar.setDisable(false);
 
             System.out.println(pedidoActual);
-            
-            tool.setText(pedidoActual.getCliente());
 
         }
     }
-    
 
     private Pedido leerFormulario() {
         String fecha = textFecha.getText();
