@@ -8,20 +8,20 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
-import models.Pedido;
-import models.Producto;
+
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 public class Estadistica implements Initializable {
 
@@ -33,22 +33,34 @@ public class Estadistica implements Initializable {
     @FXML
     private Button btnSalir;
 
-    private Pedido pedidoActual = null;
-
     @FXML
     private Button btnHoy;
 
     @FXML
     private BarChart<String, String> chartA;
 
-    private static final String VENTAS = "SELECT pr.nombre as nProducto, sum(pr.precio) as suma FROM producto pr\n"
+    private static final String VENTAS_MES = "SELECT pr.nombre as nProducto, sum(pr.precio) as suma FROM producto pr\n"
             + "INNER JOIN pedido p\n"
             + "WHERE pr.nombre = p.producto\n"
             + "and pr.nombre in (SELECT producto FROM pedido)\n"
             + "and p.fecha > current_date - interval 1 month\n"
             + "group by pr.nombre";
+    private static final String VENTAS_SEMANA = "SELECT pr.nombre as nProducto, sum(pr.precio) as suma FROM producto pr\n"
+            + "INNER JOIN pedido p\n"
+            + "WHERE pr.nombre = p.producto\n"
+            + "and pr.nombre in (SELECT producto FROM pedido)\n"
+            + "and p.fecha > current_date - interval 1 week\n"
+            + "group by pr.nombre";
+    private static final String VENTAS_HOY = "SELECT pr.nombre as nProducto, sum(pr.precio) as suma FROM producto pr\n"
+            + "INNER JOIN pedido p\n"
+            + "WHERE pr.nombre = p.producto\n"
+            + "and pr.nombre in (SELECT producto FROM pedido)\n"
+            + "and p.fecha = current_date\n"
+            + "group by pr.nombre";
 
-    ArrayList<ProductoData> productosVenta = traerVentas();
+    private String paramDinamico = VENTAS_SEMANA;
+
+    private ComboBox<String> comboTramo;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -58,28 +70,47 @@ public class Estadistica implements Initializable {
     }
 
     private void crearChart() {
-        XYChart.Series serie1 = new XYChart.Series<>();
-        serie1.setName("Producto");
 
-        for (ProductoData p : productosVenta) {
+        XYChart.Series serie1 = new XYChart.Series<>();
+        serie1.setName("Mes");
+
+        for (ProductoData p : traerVentas(VENTAS_MES)) {
             String nombre = p.getNombre();
             int venta = p.getVenta();
 
             serie1.getData().add(new XYChart.Data(nombre, venta));
-
         }
-        chartA.getData().addAll(serie1);
-        System.out.println(productosVenta.toString());
+        XYChart.Series serie2 = new XYChart.Series<>();
+        serie2.setName("Semana");
+
+        for (ProductoData p : traerVentas(VENTAS_SEMANA)) {
+            String nombre = p.getNombre();
+            int venta = p.getVenta();
+
+            serie2.getData().add(new XYChart.Data(nombre, venta));
+        }
+        XYChart.Series serie3 = new XYChart.Series<>();
+        serie3.setName("Hoy");
+
+        for (ProductoData p : traerVentas(VENTAS_HOY)) {
+            String nombre = p.getNombre();
+            int venta = p.getVenta();
+
+            serie3.getData().add(new XYChart.Data(nombre, venta));
+        }
+
+        chartA.getData().addAll(serie1, serie2, serie3);
+
     }
 
-    public ArrayList<ProductoData> traerVentas() {
+    public ArrayList<ProductoData> traerVentas(String paramDinamico) {
 
         ArrayList<ProductoData> listaVentas = new ArrayList<>();
 
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             Transaction tx = session.beginTransaction();
-            SQLQuery query = session.createSQLQuery(VENTAS);
+            SQLQuery query = session.createSQLQuery(paramDinamico);
             List<Object[]> rows = query.list();
 
             for (Object[] row : rows) {

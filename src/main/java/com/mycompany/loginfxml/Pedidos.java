@@ -81,6 +81,8 @@ public class Pedidos implements Initializable {
     private Button btnHistorial;
     @FXML
     private Button btnEstadistica;
+    @FXML
+    private Button btnCarta;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

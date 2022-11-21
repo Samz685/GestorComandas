@@ -65,6 +65,10 @@ public class Carta implements Initializable {
     @FXML
     private Label detalle;
     private Producto productoActual = null;
+    @FXML
+    private Button btnPedidos;
+    @FXML
+    private Button btnEstadistica;
     
 
     @Override
@@ -262,6 +266,26 @@ public class Carta implements Initializable {
 
     @FXML
     private void Cerrar(ActionEvent event) {
+    }
+
+    @FXML
+    private void irPedidos(ActionEvent event) {
+        
+        try {
+            App.setRoot("pedidos");
+        } catch (IOException ex) {
+            Logger.getLogger(Carta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void irEstadistica(ActionEvent event) {
+        
+        try {
+            App.setRoot("estadistica");
+        } catch (IOException ex) {
+            Logger.getLogger(Carta.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     

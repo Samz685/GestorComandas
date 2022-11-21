@@ -40,7 +40,7 @@
                         <Label text="Cliente" GridPane.rowIndex="1" />
                         <TextField fx:id="textFecha" GridPane.columnIndex="1" />
                         <TextField fx:id="textCliente" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button fx:id="btnEstadistica" mnemonicParsing="false" onAction="#irEstadistica" text="Estadistica" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button fx:id="btnEstadistica" mnemonicParsing="false" onAction="#irEstadistica" prefHeight="50.0" prefWidth="150.0" text="Estadistica" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                      <padding>
                         <Insets left="-50.0" right="50.0" />
@@ -81,7 +81,8 @@
                         <Button fx:id="btnActualizar" mnemonicParsing="false" onAction="#actualizarPedido" prefHeight="50.0" prefWidth="100.0" text="Actualizar" />
                         <Button fx:id="btnBorrar" mnemonicParsing="false" onAction="#borrarPedido" prefHeight="50.0" prefWidth="100.0" text="Borrar" GridPane.columnIndex="1" />
                         <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#Salir" prefHeight="50.0" prefWidth="100.0" text="Salir" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button fx:id="btnHistorial" mnemonicParsing="false" onAction="#irHistorial" prefHeight="50.0" prefWidth="100.0" text="Historial" GridPane.rowIndex="1" />
+                        <Button fx:id="btnHistorial" mnemonicParsing="false" onAction="#irHistorial" prefHeight="50.0" prefWidth="100.0" text="Historial" GridPane.rowIndex="2" />
+                        <Button fx:id="btnCarta" mnemonicParsing="false" onAction="#abrirCarta" prefHeight="50.0" prefWidth="100.0" text="Carta" GridPane.rowIndex="1" />
                      </children>
                      <padding>
                         <Insets left="70.0" right="-70.0" top="12.0" />

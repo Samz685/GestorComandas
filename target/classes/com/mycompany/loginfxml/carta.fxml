@@ -41,6 +41,7 @@
                         <Label text="Tipo" GridPane.rowIndex="1" />
                         <TextField fx:id="textNombre" GridPane.columnIndex="1" />
                         <TextField fx:id="textTipo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button fx:id="btnEstadistica" mnemonicParsing="false" onAction="#irEstadistica" prefHeight="50.0" prefWidth="150.0" text="Estadistica" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                      <padding>
                         <Insets right="10.0" />
@@ -87,6 +88,7 @@
                         <Button fx:id="btnActualizar" minWidth="0.0" mnemonicParsing="false" onAction="#actualizarProducto" prefHeight="50.0" prefWidth="100.0" text="Actualizar" />
                         <Button fx:id="btnBorrar" minWidth="0.0" mnemonicParsing="false" onAction="#borrarProducto" prefHeight="50.0" prefWidth="100.0" text="Borrar" GridPane.columnIndex="1" />
                         <Button fx:id="btnSalir" minWidth="0.0" mnemonicParsing="false" onAction="#Salir" prefHeight="50.0" prefWidth="100.0" text="Salir" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button fx:id="btnPedidos" mnemonicParsing="false" onAction="#irPedidos" prefHeight="50.0" prefWidth="100.0" text="PEDIDOS" GridPane.rowIndex="1" />
                      </children>
                      <FlowPane.margin>
                         <Insets left="70.0" right="-70.0" top="12.0" />
