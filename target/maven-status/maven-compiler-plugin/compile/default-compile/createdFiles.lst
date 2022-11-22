@@ -8,4 +8,5 @@ com\mycompany\loginfxml\Pedidos.class
 com\mycompany\loginfxml\Historial.class
 module-info.class
 models\ProductoData.class
+com\mycompany\loginfxml\Estadistica.class
 models\Producto.class

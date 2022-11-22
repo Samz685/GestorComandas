@@ -4,10 +4,7 @@
  */
 package models;
 
-/**
- *
- * @author Syzer
- */
+
 public class ProductoData {
     
     private String nombre;

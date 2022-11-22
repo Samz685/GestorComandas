@@ -12,17 +12,17 @@
    <center>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnCarta" mnemonicParsing="false" onAction="#verCarta" prefHeight="35.0" prefWidth="130.0" text="Ver Carta">
+            <Button fx:id="btnCarta" mnemonicParsing="false" onAction="#verCarta" prefHeight="90.0" prefWidth="175.0" text="Ver Carta">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnComandas" mnemonicParsing="false" onAction="#verComandas" prefHeight="35.0" prefWidth="130.0" text="Ver Comandas">
+            <Button fx:id="btnComandas" mnemonicParsing="false" onAction="#verComandas" prefHeight="90.0" prefWidth="175.0" text="Ver Comandas">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnSalir" cancelButton="true" mnemonicParsing="false" onAction="#Salir" prefHeight="35.0" prefWidth="130.0" text="Salir">
+            <Button fx:id="btnSalir" cancelButton="true" mnemonicParsing="false" onAction="#Salir" prefHeight="90.0" prefWidth="175.0" text="Salir">
                <font>
                   <Font size="16.0" />
                </font>
