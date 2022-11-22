@@ -1,5 +1,4 @@
 com\mycompany\loginfxml\Principal.class
-models\ClienteData.class
 com\mycompany\loginfxml\App.class
 com\mycompany\loginfxml\Carta.class
 models\Pedido.class
